@@ -5,8 +5,12 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import org.omg.Messaging.SyncScopeHelper;
 
 public class GuestBook implements ActionListener {
 	ArrayList<String> namesList = new ArrayList<String>();
@@ -14,11 +18,26 @@ public class GuestBook implements ActionListener {
 	JFrame mainFarme = new JFrame();
 	JButton addName = new JButton();
 	JButton viewNames = new JButton();
-	JTextField inputfield1 = new JTextField();
+	//JLabel name1 = new JLabel();
+	//JLabel name2 = new JLabel();
+	//JLabel name3 = new JLabel();
+	//JLabel name4 = new JLabel();
+	//JLabel name5 = new JLabel();
+	//JLabel name6 = new JLabel();
+	JLabel names;
+	String a;
+	String b;
+	String c;
+	String d;
+	String e;
+	String f;
+	int numberOfNames = 0;
+	
 	public static void main(String[] args) {
 		GuestBook guestbookMain = new GuestBook();
 	}
 	public GuestBook() {
+		
 		mainFarme.add(mainPanel);
 		mainPanel.add(addName);
 		mainPanel.add(viewNames);
@@ -42,9 +61,32 @@ public class GuestBook implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("Add a Name")) {
 			System.out.println("addName");
+			namesList.add(JOptionPane.showInputDialog("Insert Name Here"));
+			
 		}
 		if(e.getActionCommand().equals("View Names")) {
+			for(String List : namesList) {
+				numberOfNames ++;
+				JLabel label = new JLabel();
+				System.out.println("Guest number " + Integer.parseUnsignedInt(numberOfNames) + "-" + List);
+				mainPanel.add(label);
+				label.setText(List);
+			}
+			//this.a = namesList.get(1);
+			//this.b = namesList.get(2);
+			//this.c = namesList.get(3);
+			//this.d = namesList.get(4);
+			//this.e = namesList.get(5);
+			//this.f = namesList.get(6);
 			System.out.println("viewNames");
+			viewNames.setText("Back");
+		}
+		if(e.getActionCommand().equals("Back")) {
+			mainPanel.removeAll();
+			mainPanel.add(addName);
+			mainPanel.add(viewNames);
+			System.out.println("Back");
+			viewNames.setText("View Names");
 		}
 		
 	}
