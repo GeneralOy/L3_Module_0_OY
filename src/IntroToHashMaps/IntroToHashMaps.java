@@ -1,6 +1,23 @@
 package IntroToHashMaps;
 
+import java.util.HashMap;
+
 public class IntroToHashMaps {
+	public static void main(String[] args) {
+		IntroToHashMaps mainIntro = new IntroToHashMaps();
+	}
+	
+	public IntroToHashMaps() {
+		int u = 0;
+		HashMap<Integer,Double> roots = new HashMap<Integer, Double>();
+		for (int i = 0; i < 501; i++) {
+			roots.put(i, Math.sqrt(i));
+		}
+		for(Double i : roots.values()) {
+			System.out.println(u + "'s root is " + i);
+			u++;
+		}
+	}
 	//1. Create a HashMap called roots with Integers for the keys and Doubles for the values.
 	
 	//2. Using a for-loop, add 500 entries to your HashMap. The key entry will be the 

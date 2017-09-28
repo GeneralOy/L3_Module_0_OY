@@ -18,12 +18,6 @@ public class GuestBook implements ActionListener {
 	JFrame mainFarme = new JFrame();
 	JButton addName = new JButton();
 	JButton viewNames = new JButton();
-	//JLabel name1 = new JLabel();
-	//JLabel name2 = new JLabel();
-	//JLabel name3 = new JLabel();
-	//JLabel name4 = new JLabel();
-	//JLabel name5 = new JLabel();
-	//JLabel name6 = new JLabel();
 	JLabel names;
 	String a;
 	String b;
@@ -68,16 +62,11 @@ public class GuestBook implements ActionListener {
 			for(String List : namesList) {
 				numberOfNames ++;
 				JLabel label = new JLabel();
-				System.out.println("Guest number " + Integer.parseUnsignedInt(numberOfNames) + "-" + List);
+				System.out.println("Guest number " + numberOfNames + "-" + List);
 				mainPanel.add(label);
-				label.setText(List);
+				label.setText("<html>" + "Guest number " + numberOfNames + "; " + List + "<br></html>");
 			}
-			//this.a = namesList.get(1);
-			//this.b = namesList.get(2);
-			//this.c = namesList.get(3);
-			//this.d = namesList.get(4);
-			//this.e = namesList.get(5);
-			//this.f = namesList.get(6);
+			numberOfNames = 0;
 			System.out.println("viewNames");
 			viewNames.setText("Back");
 		}
