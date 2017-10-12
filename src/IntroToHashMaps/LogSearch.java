@@ -43,12 +43,19 @@ public class LogSearch implements ActionListener {
 		if (e.getActionCommand().equals("Add Entry")) {
 			System.out.println("Add Entry");
 			String entryAdded = JOptionPane.showInputDialog("Input Entry Here");
-			ID.put(IDInt, entryAdded);
+			ID.put(IDInt + 1, entryAdded);
 			System.out.println(ID.get(IDInt));
 			IDInt++;
 		}
 		if (e.getActionCommand().equals("Search IDs")) {
 			System.out.println("Search IDs");
+			String searchID = JOptionPane.showInputDialog("Input ID Number Here");
+			int IDnum = Integer.parseInt(searchID);
+			if(ID.get(IDnum) == null) {
+				JOptionPane.showMessageDialog(null, "This entry does not exist");
+			}else {
+				JOptionPane.showMessageDialog(null, "The Entry for this ID was " + this.ID.get(IDnum));
+			}
 		}
 		if (e.getActionCommand().equals("View List")) {
 			System.out.println("View List");
