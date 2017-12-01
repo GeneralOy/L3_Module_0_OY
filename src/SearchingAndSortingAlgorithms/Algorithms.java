@@ -70,44 +70,42 @@ public class Algorithms {
 		ArrayList<Double> SortedScores = new ArrayList<Double>(Arrays.asList());
 		System.out.println("asdf");
 		System.out.println(results.size());
-		/*for (int i = 1; i <= results.size(); i++) {
-			System.out.println("check");
-			for (int c = 0; c <= SortedScores.size(); c++) {
-				System.out.println("check2");
-				System.out.println(results.get(z));
-				if (((results.get(z)) >= (SortedScores.get(z)))) {
-					System.out.println(z);
-				} else if (results.get(z) < (SortedScores.get(z))) {
-					SortedScores.add(z, results.get(z));
-					System.out.println(z + results.get(z));
-				} else {
-					System.out.println("broken");
-				}
-				System.out.println("test");
-				if (z <= 13) {
-					z++;
-				}
-				results.
-				// Sort through each number in results; for every number, sort through every
-				// number in sorted scores, and find the 2 that it's in between
-			}
-			System.out.println("test1");
-		}*/
 		SortedScores.add(results.get(z));
-		for(int i = 1; i <= results.size()-1; i++) {
+		System.out.println("TTTTT" + results.size());
+		/*for (int i = 1; i < results.size(); i++) {
 			System.out.println(i);
-			for(int c = 0; c < SortedScores.size(); c++){
-				if(results.get(c)>=SortedScores.get(c)) {
-					System.out.println();
-				}else if(results.get(c)<SortedScores.get(c)) {
-					SortedScores.add(c-1, results.get(c));
+			for (int c = 0; c < SortedScores.size(); c++) {
+				if (SortedScores.size() <= (i)) {
+					if (results.get(c) > SortedScores.get(i-1)) {
+						System.out.println("results > Sorted Scores");
+						z++;
+					} else if (results.get(c) <= SortedScores.get(i-1)) {
+						System.out.println(results.get(c) - SortedScores.get(z));
+						SortedScores.add(c, results.get(i));
+						System.out.println("results <= Sorted Scores");
+						c = SortedScores.size();
+					}
+					System.out.println(c);
+					System.out.println(SortedScores);
 				}
-				System.out.println(c);
 			}
-		}
+
+		}*/
 		System.out.println("test-----x");
 		System.out.println(SortedScores);
 		return SortedScores;
+		/**
+		 * for (int i = 1; i <= results.size(); i++) { System.out.println("check"); for
+		 * (int c = 0; c <= SortedScores.size(); c++) { System.out.println("check2");
+		 * System.out.println(results.get(z)); if (((results.get(z)) >=
+		 * (SortedScores.get(z)))) { System.out.println(z); } else if (results.get(z) <
+		 * (SortedScores.get(z))) { SortedScores.add(z, results.get(z));
+		 * System.out.println(z + results.get(z)); } else {
+		 * System.out.println("broken"); } System.out.println("test"); if (z <= 13) {
+		 * z++; } results. // Sort through each number in results; for every number,
+		 * sort through every // number in sorted scores, and find the 2 that it's in
+		 * between } System.out.println("test1"); }
+		 */
 	}
 
 }
