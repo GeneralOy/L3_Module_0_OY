@@ -73,14 +73,14 @@ public class SearchingAndSortingAlgorithms {
 	}
 
 	/* 8. Sort the DNA sequences by length from shortest to longest. */
-//	@Test
-//	public void testSortStringLength() throws Exception {
-//		List<String> unsortedSequences = Arrays.asList(new String[] { "ATAGCTGATCGTAGCTACGTACGATCG", "CATCGTACATGC", "TATGTGT",
-//				"GCTGATCGTGACTGTAC", "ACTGT" });
-//		List<String> sortedSequences = Arrays.asList(new String[] { "ACTGT", "TATGTGT", "CATCGTACATGC", "GCTGATCGTGACTGTAC",
-//				"ATAGCTGATCGTAGCTACGTACGATCG" });
-//		assertEquals(sortedSequences, Algorithms.sortDNA(unsortedSequences));
-//	}
+	@Test
+	public void testSortStringLength() throws Exception {
+		List<String> unsortedSequences = Arrays.asList(new String[] { "ATAGCTGATCGTAGCTACGTACGATCG", "CATCGTACATGC", "TATGTGT",
+				"GCTGATCGTGACTGTAC", "ACTGT" });
+		List<String> sortedSequences = Arrays.asList(new String[] { "ACTGT", "TATGTGT", "CATCGTACATGC", "GCTGATCGTGACTGTAC",
+				"ATAGCTGATCGTAGCTACGTACGATCG" });
+		assertEquals(sortedSequences, Algorithms.sortDNA(unsortedSequences));
+	}
 
 	/*
 	 * 9. Sort the words in alphabetical order. Your teacher may need to explain compareTo.

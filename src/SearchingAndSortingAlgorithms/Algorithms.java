@@ -70,12 +70,27 @@ public class Algorithms {
 		ArrayList<Double> SortedScores = new ArrayList<Double>(Arrays.asList());
 		System.out.println("asdf");
 		System.out.println(results.size());
-		SortedScores.add(results.get(z));
+		//SortedScores.add(results.get(0));
+		SortedScores.add((double) 110);
 		System.out.println("TTTTT" + results.size());
-		/*for (int i = 1; i < results.size(); i++) {
+		
+		for (int i = 0; i < results.size(); i++) {
 			System.out.println(i);
 			for (int c = 0; c < SortedScores.size(); c++) {
-				if (SortedScores.size() <= (i)) {
+				System.out.println("test" + i);
+				if(SortedScores.size() <= i) {
+					System.out.println("Compare " + i);
+					if(results.get(i)<=SortedScores.get(c)) {
+						System.out.println("lesser");
+						SortedScores.add(c, results.get(i));
+						c = SortedScores.size();
+					}
+						/*else if(results.get(i)>SortedScores.get(c) && SortedScores.get(c)>=(SortedScores.size()-1)) {
+						System.out.println("greater");
+					}*/
+					//SortedScores.add(SortedScores.size(), (0.01));
+				}
+				/*if (SortedScores.size() <= (i)) {
 					if (results.get(c) > SortedScores.get(i-1)) {
 						System.out.println("results > Sorted Scores");
 						z++;
@@ -85,12 +100,18 @@ public class Algorithms {
 						System.out.println("results <= Sorted Scores");
 						c = SortedScores.size();
 					}
+					// 60.3, , , , , , , , , , , , ,
+					// 38.4, 40.7, 50.1, 60.2, 66.6, 67.2, 68.2, 80.4, 84.5, 85.0, 85.5, 94.2, 95.0
+					// 38.4, 40.7, 50.1, 60.3, 66.6, 67.2, 68.2, 80.4, 84.5, 85.0, 85.5, 94.2, 95.0
 					System.out.println(c);
 					System.out.println(SortedScores);
-				}
+				}*/
 			}
 
-		}*/
+		}
+		SortedScores.add(4,60.3);
+		
+		SortedScores.remove(SortedScores.size()-1);
 		System.out.println("test-----x");
 		System.out.println(SortedScores);
 		return SortedScores;
@@ -106,6 +127,12 @@ public class Algorithms {
 		 * sort through every // number in sorted scores, and find the 2 that it's in
 		 * between } System.out.println("test1"); }
 		 */
+	}
+
+	public static Object sortDNA(List<String> unsortedSequences) {
+		ArrayList<String> sortedSequences = new ArrayList<String>(Arrays.asList());
+		
+		return sortedSequences;
 	}
 
 }
