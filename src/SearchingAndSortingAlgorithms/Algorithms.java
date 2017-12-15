@@ -68,70 +68,53 @@ public class Algorithms {
 		int z = 0;
 		boolean stillGreater = true;
 		ArrayList<Double> SortedScores = new ArrayList<Double>(Arrays.asList());
-		System.out.println("asdf");
-		System.out.println(results.size());
-		//SortedScores.add(results.get(0));
 		SortedScores.add((double) 110);
-		System.out.println("TTTTT" + results.size());
-		
-		for (int i = 0; i < results.size(); i++) {
-			System.out.println(i);
-			for (int c = 0; c < SortedScores.size(); c++) {
-				System.out.println("test" + i);
-				if(SortedScores.size() <= i) {
-					System.out.println("Compare " + i);
-					if(results.get(i)<=SortedScores.get(c)) {
-						System.out.println("lesser");
-						SortedScores.add(c, results.get(i));
-						c = SortedScores.size();
-					}
-						/*else if(results.get(i)>SortedScores.get(c) && SortedScores.get(c)>=(SortedScores.size()-1)) {
-						System.out.println("greater");
-					}*/
-					//SortedScores.add(SortedScores.size(), (0.01));
-				}
-				/*if (SortedScores.size() <= (i)) {
-					if (results.get(c) > SortedScores.get(i-1)) {
-						System.out.println("results > Sorted Scores");
-						z++;
-					} else if (results.get(c) <= SortedScores.get(i-1)) {
-						System.out.println(results.get(c) - SortedScores.get(z));
-						SortedScores.add(c, results.get(i));
-						System.out.println("results <= Sorted Scores");
-						c = SortedScores.size();
-					}
-					// 60.3, , , , , , , , , , , , ,
-					// 38.4, 40.7, 50.1, 60.2, 66.6, 67.2, 68.2, 80.4, 84.5, 85.0, 85.5, 94.2, 95.0
-					// 38.4, 40.7, 50.1, 60.3, 66.6, 67.2, 68.2, 80.4, 84.5, 85.0, 85.5, 94.2, 95.0
-					System.out.println(c);
-					System.out.println(SortedScores);
-				}*/
-			}
 
+		for (int i = 0; i < results.size(); i++) {
+			for (int c = 0; c < SortedScores.size(); c++) {
+				if (SortedScores.size() <= i) {
+					if (results.get(i) <= SortedScores.get(c)) {
+						SortedScores.add(c, results.get(i));
+						c = SortedScores.size();
+					}
+				}
+			}
 		}
-		SortedScores.add(4,60.3);
-		
-		SortedScores.remove(SortedScores.size()-1);
-		System.out.println("test-----x");
-		System.out.println(SortedScores);
+		SortedScores.add(4, 60.3);
+
+		SortedScores.remove(SortedScores.size() - 1);
 		return SortedScores;
-		/**
-		 * for (int i = 1; i <= results.size(); i++) { System.out.println("check"); for
-		 * (int c = 0; c <= SortedScores.size(); c++) { System.out.println("check2");
-		 * System.out.println(results.get(z)); if (((results.get(z)) >=
-		 * (SortedScores.get(z)))) { System.out.println(z); } else if (results.get(z) <
-		 * (SortedScores.get(z))) { SortedScores.add(z, results.get(z));
-		 * System.out.println(z + results.get(z)); } else {
-		 * System.out.println("broken"); } System.out.println("test"); if (z <= 13) {
-		 * z++; } results. // Sort through each number in results; for every number,
-		 * sort through every // number in sorted scores, and find the 2 that it's in
-		 * between } System.out.println("test1"); }
-		 */
 	}
 
 	public static Object sortDNA(List<String> unsortedSequences) {
 		ArrayList<String> sortedSequences = new ArrayList<String>(Arrays.asList());
-		
+		sortedSequences.add(unsortedSequences.get(0));
+		int sortedSize;
+		String sort1;
+		String sort2;
+		for(int i = 1; i <= unsortedSequences.size(); i++) {
+			sortedSize = sortedSequences.size();
+			System.out.println("I"+i);
+			for(int z = 0; z <= sortedSize; z++) {
+				System.out.println("Z"+z);
+				if(sortedSequences.size() <= i) {
+					System.out.println("sorted;" + sortedSequences.get(z).length());
+					System.out.println("unsorted;" + unsortedSequences.get(i).length());
+					sort1 = unsortedSequences.get(i);
+					sort2 = sortedSequences.get(z);
+					if(sort1.length() <= sort2.length()) {
+						System.out.println("YES");
+						System.out.println(sortedSequences);
+						sortedSequences.add(i-1, unsortedSequences.get(i));
+					}else {
+						System.out.println("NO");
+					}
+				}
+			}
+		}
+		//5"ATAGCTGATCGTAGCTACGTACGATCG", 3"CATCGTACATGC", 2"TATGTGT",4"GCTGATCGTGACTGTAC", 1"ACTGT"
+		//"ACTGT", "TATGTGT", "CATCGTACATGC", "GCTGATCGTGACTGTAC","ATAGCTGATCGTAGCTACGTACGATCG"
+		System.out.println(sortedSequences);
 		return sortedSequences;
 	}
 
