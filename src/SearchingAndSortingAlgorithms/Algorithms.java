@@ -89,33 +89,48 @@ public class Algorithms {
 	public static Object sortDNA(List<String> unsortedSequences) {
 		ArrayList<String> sortedSequences = new ArrayList<String>(Arrays.asList());
 		sortedSequences.add(unsortedSequences.get(0));
-		int sortedSize;
 		String sort1;
 		String sort2;
-		for(int i = 1; i <= unsortedSequences.size(); i++) {
-			sortedSize = sortedSequences.size();
-			System.out.println("I"+i);
-			for(int z = 0; z <= sortedSize; z++) {
-				System.out.println("Z"+z);
-				if(sortedSequences.size() <= i) {
-					System.out.println("sorted;" + sortedSequences.get(z).length());
-					System.out.println("unsorted;" + unsortedSequences.get(i).length());
-					sort1 = unsortedSequences.get(i);
-					sort2 = sortedSequences.get(z);
-					if(sort1.length() <= sort2.length()) {
-						System.out.println("YES");
-						System.out.println(sortedSequences);
-						sortedSequences.add(i-1, unsortedSequences.get(i));
-					}else {
-						System.out.println("NO");
+		int SortedNumber;
+		for (int i = 1; i <= unsortedSequences.size(); i++) {
+			System.out.println(unsortedSequences.size());
+			System.out.println("I" + i);
+			SortedNumber = 0;
+			for (int z = 0; z <= sortedSequences.size(); z++) {
+				System.out.println("Z" + z);
+				if (sortedSequences.size() <= i) {
+					if (i <= 4) {
+						System.out.println("sorted;" + sortedSequences.get(SortedNumber).length());
+						System.out.println("unsorted;" + unsortedSequences.get(i).length());
+						sort1 = unsortedSequences.get(i);
+						sort2 = sortedSequences.get(SortedNumber);
+						if (sort1.length() <= sort2.length()) {
+							System.out.println("YES");
+							System.out.println(sortedSequences);
+							sortedSequences.add(z, unsortedSequences.get(i));
+							System.out.println(sortedSequences);
+						} else {
+							System.out.println("NO");
+						}
+						SortedNumber++;
 					}
 				}
 			}
 		}
-		//5"ATAGCTGATCGTAGCTACGTACGATCG", 3"CATCGTACATGC", 2"TATGTGT",4"GCTGATCGTGACTGTAC", 1"ACTGT"
-		//"ACTGT", "TATGTGT", "CATCGTACATGC", "GCTGATCGTGACTGTAC","ATAGCTGATCGTAGCTACGTACGATCG"
+		// 5"ATAGCTGATCGTAGCTACGTACGATCG", 3"CATCGTACATGC",
+		// 2"TATGTGT",4"GCTGATCGTGACTGTAC", 1"ACTGT"
+		// "ACTGT", "TATGTGT", "CATCGTACATGC",
+		// "GCTGATCGTGACTGTAC","ATAGCTGATCGTAGCTACGTACGATCG"
 		System.out.println(sortedSequences);
 		return sortedSequences;
+	}
+
+	public static List<String> sortWords(List<String> words) {
+		ArrayList<String>sortedWords = new ArrayList<String>(Arrays.asList());
+		String wordToCompare;
+		char charOfWordToCompare;
+		sortedWords.add(words.get(0));
+		return null;
 	}
 
 }
