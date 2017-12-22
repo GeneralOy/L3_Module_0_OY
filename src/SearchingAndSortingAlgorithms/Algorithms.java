@@ -127,8 +127,9 @@ public class Algorithms {
 
 	public static List<String> sortWords(List<String> words) {
 		ArrayList<String>sortedWords = new ArrayList<String>(Arrays.asList());
-		String wordToCompare;
+		String wordToCompare = words.get(1);
 		char charOfWordToCompare;
+		wordToCompare.compareTo(words.get(0));
 		sortedWords.add(words.get(0));
 		return null;
 	}

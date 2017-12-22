@@ -72,7 +72,7 @@ public class SearchingAndSortingAlgorithms {
 		assertEquals(95.0, Algorithms.sortScores(results).get(13), 0.0);
 	}
 
-	/* 8. Sort the DNA sequences by length from shortest to longest. */
+	/** 8. Sort the DNA sequences by length from shortest to longest. */
 	@Test
 	public void testSortStringLength() throws Exception {
 		List<String> unsortedSequences = Arrays.asList(new String[] { "ATAGCTGATCGTAGCTACGTACGATCG", "CATCGTACATGC", "TATGTGT",
@@ -82,16 +82,14 @@ public class SearchingAndSortingAlgorithms {
 		assertEquals(sortedSequences, Algorithms.sortDNA(unsortedSequences));
 	}
 
-	/*
-	 * 9. Sort the words in alphabetical order. Your teacher may need to explain compareTo.
-	 */
-//	@Test
-//	public void testSortStringContents() throws Exception {
-//		List<String> words = Arrays.asList(new String[] { "aby", "dap", "alt", "alb", "ama", "ard", "ana", "ala", "awn", "dah", "bar",
-//				"bee", "bel", "bot", "bis", "cep", "alk", "cog", "col", "cwm", "dag", "ait", "dal", "daw" });
-//		assertEquals("aby", Algorithms.sortWords(words).get(0));
-//		assertEquals("bar", Algorithms.sortWords(words).get(10));
-//		assertEquals("daw", Algorithms.sortWords(words).get(words.size() - 1));
-//	}
+	/* 9. Sort the words in alphabetical order. Your teacher may need to explain compareTo.*/
+	@Test
+	public void testSortStringContents() throws Exception {
+		List<String> words = Arrays.asList(new String[] { "aby", "dap", "alt", "alb", "ama", "ard", "ana", "ala", "awn", "dah", "bar",
+				"bee", "bel", "bot", "bis", "cep", "alk", "cog", "col", "cwm", "dag", "ait", "dal", "daw" });
+		assertEquals("aby", Algorithms.sortWords(words).get(0));
+		assertEquals("bar", Algorithms.sortWords(words).get(10));
+		assertEquals("daw", Algorithms.sortWords(words).get(words.size() - 1));
+	}
 
 }
