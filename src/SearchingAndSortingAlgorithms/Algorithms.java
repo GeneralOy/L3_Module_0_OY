@@ -129,48 +129,49 @@ public class Algorithms {
 	// value of string2
 	public static List<String> sortWords(List<String> words) {
 		ArrayList<String> sortedWords = new ArrayList<String>(Arrays.asList());
+		ArrayList<String> finalSort = new ArrayList<String>(Arrays.asList());
 		String wordToCompare = words.get(1);
 		sortedWords.add(words.get(0));
-		for (int i = 1; i <= words.size(); i++) {
-			wordToCompare = words.get(i + 1);
-			for (int z = 0; z < sortedWords.size(); z++) {
-				/***/
-				System.out.println(wordToCompare + "," + sortedWords.get(0));
-				/***/
-				System.out.println(wordToCompare.compareTo(sortedWords.get(0)));
+		String testing = "b";
+		System.out.println(testing.compareTo("a"));
+		System.out.println(testing.compareTo("b"));
+		System.out.println(testing.compareTo("c"));
+		System.out.println(words.size());
+		int sortedSize = sortedWords.size();
+		for (int i = 0; i <= 24; i++) {
+			wordToCompare = words.get(i);
+			sortedSize = sortedWords.size();
+			for (int z = 0; z < sortedSize; z++) {
 				if (wordToCompare.substring(0).compareTo((sortedWords.get(z)).substring(0)) > 0) {
-					System.out.println(wordToCompare.substring(0).compareTo(sortedWords.get(z).substring(0)));
-					System.out.println(wordToCompare.substring(0) + ", " + sortedWords.get(z).substring(0));
-					
+					sortedWords.add(z, wordToCompare);
+					System.out.println(sortedWords);
+					z = sortedSize;
+
+				} else if (wordToCompare.substring(0).compareTo((sortedWords.get(z)).substring(0)) == 0) {
 					if (wordToCompare.substring(1).compareTo((sortedWords.get(z)).substring(1)) > 0) {
-						System.out.println(wordToCompare.substring(1).compareTo(sortedWords.get(z).substring(1)));
-						System.out.println(wordToCompare.substring(1) + ", " + sortedWords.get(z).substring(1));
-						
+						System.out.println("///////////////");
+						sortedWords.add(z, wordToCompare);
+						System.out.println(sortedWords);
+						z = sortedSize;
+
+					} else if (wordToCompare.substring(1).compareTo((sortedWords.get(z)).substring(1)) == 0) {
 						if (wordToCompare.substring(2).compareTo((sortedWords.get(z)).substring(2)) > 0) {
-							System.out.println(wordToCompare.substring(2).compareTo(sortedWords.get(z).substring(2)));
-							System.out.println(wordToCompare.substring(2) + ", " + sortedWords.get(z).substring(2));
-							sortedWords.add(wordToCompare);
-							
-						} else {
-							/***/
+							System.out.println("|||||||||||||||||||||||");
+							sortedWords.add(z, wordToCompare);
+							System.out.println(sortedWords);
+							z = sortedSize;
+
 						}
-					} else {
-						/***/
 					}
-				} else {
-					/***/
 				}
+
 			}
 			System.out.println(sortedWords);
 		}
-		/** char charOfWordToCompare = wordToCompare.charAt(2); */
-		/** System.out.println(charOfWordToCompare); */
-		/**
-		 * if(wordToCompare.compareTo(words.get(0)) > 0) {
-		 * System.out.println(wordToCompare.compareTo(words.get(0)));
-		 * System.out.println(wordToCompare + ", " + words.get(0));
-		 * System.out.println("wordsToCompare > words.get(0)");
-		 */
-		return null;
+		for (int i = 0; i < sortedWords.size(); i++) {
+			finalSort.add(24-i, sortedWords.get(i));
+		}
+		System.out.println(finalSort);
+		return finalSort;
 	}
 }
