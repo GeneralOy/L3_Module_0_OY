@@ -12,16 +12,31 @@ import javax.swing.JOptionPane;
 public class IntroToFileIO {
 	public static void main(String[] args) {
 		IntroToFileIO mainIntro = new IntroToFileIO();
-		
-		
+
 	}
 
 	public IntroToFileIO() {
-		String userInput = JOptionPane.showInputDialog("Type in a message to save here!");
+		inputThings();
+		readingThings();
+
+	}
+
+	void inputThings() {
+		String userInputPre = JOptionPane.showInputDialog("Type in a message to save here!");
+		String userInput = userInputPre.substring(1, userInputPre.length()) + "" + userInputPre.substring(0, 1) + "ay";
+		String fileToSaveTo = JOptionPane.showInputDialog(
+				"What file would you like to save this to inside of Level_3_Module_0_OY/src/? Enter in this format; packageName/fileNameHere.extension");
+		System.out.println(userInput);
 		FileReader("src/intro_to_file_io/test.txt");
 		BufferReader("src/intro_to_file_io/test2.txt");
 		FileWriter("src/intro_to_file_io/test2.txt", "\nThis is me writing a message!");
-		FileWriter("src/intro_to_file_io/test.txt", userInput);
+		FileWriter("src/" + fileToSaveTo, userInput);
+	}
+
+	void readingThings() {
+		String fileToRead = JOptionPane.showInputDialog(
+				"Type in the name of the file you'd like to read from inside of Level_3_Module_0_OY/src/, in this format; packageName/fileNameHere.extension");
+		FileReader("src/" + fileToRead);
 	}
 
 	void FileReader(String fileToRead) {
@@ -73,15 +88,15 @@ public class IntroToFileIO {
 			 * when calling the FileWriter constructor. (e.g. FileWriter fw = new
 			 * FileWriter("src/intro_to_file_io/test2.txt", true);)
 			 */
-			
+
 			fw.write(messageToWrite);
-			
+
 			fw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	void FileChooser() {
 		// Using a file chooser
 		JFileChooser jfc = new JFileChooser();
