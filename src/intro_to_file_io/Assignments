@@ -8,7 +8,7 @@ Study the examples in IntroToFileIO.java. Ask your teacher for any clarification
    It is highly recommend that you test your program thoroughly with junk files before running it on your actual work.
    
 4.// Make a to-do list tracker:
-	//Create a window with four buttons: add task, remove task, save, and load.
+	/done/Create a window with four buttons: add task, remove task, save, and load.
 	//The add task button will display a JOptionPane to get a task from the user and add it to the list.
 	//Remove task will remove a task from the list. You can choose your own method of how to select a task from the list.
 	//The save button will save the current task list to a file.

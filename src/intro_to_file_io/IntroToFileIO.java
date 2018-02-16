@@ -1,5 +1,7 @@
 package intro_to_file_io;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -13,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class IntroToFileIO {
+public class IntroToFileIO implements ActionListener {
 	public static void main(String[] args) {
 		IntroToFileIO mainIntro = new IntroToFileIO();
 
@@ -38,11 +40,19 @@ public class IntroToFileIO {
 		removeButton.setText("Remove Task from List");
 		saveButton.setText("Save List");
 		loadButton.setText("Load List");
+		addButton.addActionListener(this);
+		removeButton.addActionListener(this);
+		saveButton.addActionListener(this);
+		loadButton.addActionListener(this);
 		mainFrame.setVisible(true);
 		mainFrame.setSize(400, 150);
-		inputThings();
-		readingThings();
-		copyrightThings();
+		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// inputThings();
+		// readingThings();
+		// copyrightThings();
+		BufferReader("src/intro_to_file_io/TestingGrounds.java");
+		System.out.println("\n \n");
+		FileReader("src/intro_to_file_io/TestingGrounds.java");
 
 	}
 
@@ -68,6 +78,48 @@ public class IntroToFileIO {
 		FileReader("src/" + fileToRead);
 	}
 
+	void addTask(String taskLocation) {
+		String userInputReady = JOptionPane.showInputDialog("Type in the task you would like to save here!");
+		FileWriter(taskLocation, FileReaderString(taskLocation) + "=->  " + userInputReady);
+
+	}
+/**vvvvvvvWORK HEREvvvvvvv**/
+	void removeTask() {
+		String taskToRemove = JOptionPane
+				.showInputDialog("Which item on the list would you like to remove? Enter -just- the number of the line");
+		int taskToRemoveInt = Integer.parseInt(taskToRemove);
+		FileWriter("src/intro_to_file_io/TestingGrounds.java", RemoveTaskReader("src/intro_to_file_io/TestingGrounds.java",taskToRemoveInt));
+		
+	}
+/**^^^^^^^WORK HERE^^^^^^^**/
+	void saveList() {
+
+	}
+
+	void loadList() {
+
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		if (e.getActionCommand().equals("Add Task to List")) {
+			System.out.println("ADD");
+			addTask("src/intro_to_file_io/TestingGrounds.java");
+		}
+		if (e.getActionCommand().equals("Remove Task from List")) {
+			System.out.println("REMOVE");
+			removeTask();
+		}
+		if (e.getActionCommand().equals("Save List")) {
+			System.out.println("SAVE");
+			saveList();
+		}
+		if (e.getActionCommand().equals("Load List")) {
+			System.out.println("LOAD");
+			loadList();
+		}
+
+	}
+
 	void FileReader(String fileToRead) {
 		// Read from a file one character at a time
 		try {
@@ -76,7 +128,7 @@ public class IntroToFileIO {
 			while (c != -1) {
 				System.out.print((char) c);
 				c = fr.read();
-
+				// System.out.println("HI!");
 			}
 			fr.close();
 		} catch (FileNotFoundException e) {
@@ -87,14 +139,15 @@ public class IntroToFileIO {
 	}
 
 	String FileReaderString(String fileToRead) {
-		String stuffRead = "//COPYRIGHT OWEN YIN";
+		String stuffRead = "";/* "//COPYRIGHT OWEN YIN"; */
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(fileToRead));
 
 			String line = br.readLine();
 			while (line != null) {
-				stuffRead = stuffRead + "\n" + line;
+				stuffRead = stuffRead + line + "\n";
 				line = br.readLine();
+				// System.out.println("HI!");
 			}
 
 			br.close();
@@ -116,6 +169,7 @@ public class IntroToFileIO {
 			while (line != null) {
 				System.out.println(line);
 				line = br.readLine();
+				System.out.println("HI!");
 			}
 
 			br.close();
@@ -125,7 +179,37 @@ public class IntroToFileIO {
 			e.printStackTrace();
 		}
 	}
+/**vvvvvvvTHERE'S AN ERROR HEREvvvvvvv**/
+	String RemoveTaskReader(String fileToRead, int lineToRemove) {
+		// Read from a file one line at a time
+		String stuffRead = "";
+		int lineNumber = 0;
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(fileToRead));
 
+			String line = br.readLine();
+			while (line != null) {
+				lineNumber++;
+				System.out.println(line);
+				if(lineNumber != lineToRemove) {
+					line = br.readLine();
+					stuffRead = stuffRead + line + "\n";
+				}else {
+					br.readLine();
+				}
+			}
+
+			br.close();
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		lineNumber = 1;
+		System.out.println(stuffRead);
+		return stuffRead;
+	}
+	/**^^^^^^^THERE'S AN ERROR HERE^^^^^^^**/
 	void FileWriter(String fileToWriteTo, String messageToWrite) {
 		// Write to a file
 		try {
@@ -154,4 +238,5 @@ public class IntroToFileIO {
 			System.out.println(fileName);
 		}
 	}
+
 }
