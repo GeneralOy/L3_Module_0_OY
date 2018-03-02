@@ -189,9 +189,6 @@ public class IntroToFileIO implements ActionListener {
 			String line = br.readLine();
 			while (line != null) {
 				System.out.println(line);
-				if(lineNumber == 0) {
-					stuffRead = line + "\n" + stuffRead;
-				}
 				if(lineNumber == (lineToRemove-1)) {
 					br.readLine();
 					stuffRead = stuffRead + "\n";
