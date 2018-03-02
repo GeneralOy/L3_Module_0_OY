@@ -186,17 +186,20 @@ public class IntroToFileIO implements ActionListener {
 		int lineNumber = 0;
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(fileToRead));
-			lineNumber++;
 			String line = br.readLine();
 			while (line != null) {
 				System.out.println(line);
-				if(lineNumber == lineToRemove) {
+				if(lineNumber == 0) {
+					stuffRead = line + "\n" + stuffRead;
+				}
+				if(lineNumber == (lineToRemove-1)) {
 					br.readLine();
 					stuffRead = stuffRead + "\n";
 				}else {
 					line = br.readLine();
 					stuffRead = stuffRead + line + "\n";
 				}
+				lineNumber++;
 			}
 
 			br.close();
@@ -205,7 +208,7 @@ public class IntroToFileIO implements ActionListener {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		lineNumber = 1;
+		//lineNumber = 1;
 		System.out.println(stuffRead);
 		return stuffRead;
 	}
