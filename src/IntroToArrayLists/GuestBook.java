@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import org.omg.Messaging.SyncScopeHelper;
 
@@ -18,7 +19,7 @@ public class GuestBook implements ActionListener {
 	JFrame mainFarme = new JFrame();
 	JButton addName = new JButton();
 	JButton viewNames = new JButton();
-	JLabel names;
+	JLabel names = new JLabel("", SwingConstants.CENTER);
 	String a;
 	String b;
 	String c;
@@ -61,10 +62,10 @@ public class GuestBook implements ActionListener {
 		if(e.getActionCommand().equals("View Names")) {
 			for(String List : namesList) {
 				numberOfNames ++;
-				JLabel label = new JLabel();
+				//JLabel label = new JLabel();
 				System.out.println("Guest number " + numberOfNames + "-" + List);
 				mainPanel.add(label);
-				label.setText("<html>" + "Guest number " + numberOfNames + "; " + List + "<br></html>");
+				label.setText("<html>" + "Guest number " + numberOfNames + "; " + List + "</html>");
 			}
 			numberOfNames = 0;
 			System.out.println("viewNames");
