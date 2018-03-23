@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -18,6 +19,7 @@ import javax.swing.SwingConstants;
 
 public class IntroToFileIO implements ActionListener {
 	String list = "";
+	ArrayList<String> listOfTasks = new ArrayList<String>();
 	String fileChosen = "src/intro_to_file_io/TestingGrounds.java";
 	JFrame mainFrame = new JFrame();
 	JPanel mainPanel = new JPanel();
@@ -59,8 +61,9 @@ public class IntroToFileIO implements ActionListener {
 		BufferReader("src/intro_to_file_io/TestingGrounds.java");
 		System.out.println("\n \n");
 		FileReader("src/intro_to_file_io/TestingGrounds.java");
-		toDoList.setText(BufferReaderStringOutput(fileChosen));;
-		list = BufferReaderStringOutput(fileChosen);
+		//toDoList.setText(BufferReaderStringOutput(fileChosen));;
+		//list = BufferReaderStringOutput(fileChosen);
+		toDoList.setText(listOfTasks.toString());
 		update();
 	}
 
@@ -90,7 +93,7 @@ public class IntroToFileIO implements ActionListener {
 	String addTask(String taskLocation) {
 		String userInputReady = JOptionPane.showInputDialog("Type in the task you would like to save here!");
 		if (userInputReady != null) {
-			list = "<html" + list + "=>" + userInputReady + "<br><html>";
+			list = "<html>" + list + "=>" + userInputReady + "<br><html>";
 			// FileWriter(taskLocation, FileReaderString(taskLocation) + "=-> " +
 			// userInputReady);
 		}
@@ -108,16 +111,18 @@ public class IntroToFileIO implements ActionListener {
 		// }
 		// FileWriter("src/intro_to_file_io/TestingGrounds.java",
 		// RemoveTaskReader("src/intro_to_file_io/TestingGrounds.java",taskToRemoveInt));
-		return taskToRemove;
+		//String returnedText = RemoveTaskReader(fileChosen, taskToRemoveInt);
+		String returnedText = "";
+		return returnedText;
 	}
 
 	/** ^^^^^^^WORK HERE^^^^^^^ **/
 	void saveList(String fileToSaveTo) {
-
+		FileWriter(fileToSaveTo, toDoList.getText());
 	}
 
 	void update() {
-		toDoList.setText(BufferReaderStringOutput(fileChosen));
+		//toDoList.setText(BufferReaderStringOutput(fileChosen));
 	}
 	
 	String loadList() {
@@ -173,7 +178,7 @@ public class IntroToFileIO implements ActionListener {
 		}
 	}
 
-	/** vvvvvvvvvvvvvvv **/
+	/* vvvvvvvvvvvvvvv **/
 	String FileReaderString(String fileToRead) {
 		String stuffRead = "<html>";
 		try {
@@ -199,7 +204,7 @@ public class IntroToFileIO implements ActionListener {
 
 	}
 
-	/** ^^^^^^^^^^^^^^^ **/
+	/* ^^^^^^^^^^^^^^^ **/
 	void BufferReader(String fileToRead) {
 		// Read from a file one line at a time
 		try {
@@ -219,19 +224,20 @@ public class IntroToFileIO implements ActionListener {
 			e.printStackTrace();
 		}
 	}
-	String BufferReaderStringOutput(String fileToRead) {
+	void BufferReaderStringOutput(String fileToRead)/*check*/ {
 		// Read from a file one line at a time
-		String fileRead = "";
+		String fileRead = "<html>";
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(fileToRead));
 
 			String line = br.readLine();
 			while (line != null) {
 				System.out.println(line);
-				fileRead = "<html>" +/**/ fileRead + line + "<br></html>"/**/;
+				fileRead =fileRead + line + "<br/>";
 				line = br.readLine();
 				System.out.println("HI!");
 			}
+			fileRead +="<br></html>";
 
 			br.close();
 		} catch (FileNotFoundException e1) {
@@ -239,14 +245,14 @@ public class IntroToFileIO implements ActionListener {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return fileRead;
+		//return fileRead;
 	}
 
 	/** vvvvvvvvvvvvvvv **/
-	//vvvvvvvTHERE'S AN ERROR HEREvvvvvvv
+	/** /vvvvvvvSTILL NOT WORKINGvvvvvvv*/
 	String RemoveTaskReader(String fileToRead, int lineToRemove) {
 		// Read from a file one line at a time
-		String stuffRead = "";
+		String stuffRead = "<html>";
 		int lineNumber = 0;
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(fileToRead));
@@ -254,14 +260,15 @@ public class IntroToFileIO implements ActionListener {
 			while (line != null) {
 				System.out.println(line);
 				if (lineNumber == (lineToRemove - 1)) {
-					stuffRead = stuffRead + "\n";
+					stuffRead = stuffRead + "<br/>";
 					br.readLine();
 				} else {
-					stuffRead = stuffRead + line + "\n";
+					stuffRead = stuffRead + line + "<br/>";
 					line = br.readLine();
 				}
 				lineNumber++;
 			}
+			stuffRead += "<br></html>";
 			br.close();
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
@@ -271,7 +278,7 @@ public class IntroToFileIO implements ActionListener {
 		System.out.println(stuffRead);
 		return stuffRead;
 	}
-	// ^^^^^^^THERE'S AN ERROR HERE^^^^^^^
+	/** / ^^^^^^^STILL NOT WORKING^^^^^^^*/
 
 	/** ^^^^^^^^^^^^^^^^ **/
 	void FileWriter(String fileToWriteTo, String messageToWrite) {
