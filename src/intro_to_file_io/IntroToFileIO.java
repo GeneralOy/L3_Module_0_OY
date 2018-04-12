@@ -94,6 +94,7 @@ public class IntroToFileIO implements ActionListener {
 		String userInputReady = JOptionPane.showInputDialog("Type in the task you would like to save here!");
 		if (userInputReady != null) {
 			list = "<html>" + list + "=>" + userInputReady + "<br><html>";
+			listOfTasks.add(userInputReady);
 			// FileWriter(taskLocation, FileReaderString(taskLocation) + "=-> " +
 			// userInputReady);
 		}
@@ -135,6 +136,7 @@ public class IntroToFileIO implements ActionListener {
 			System.out.println(fileName);
 			return fileName;
 		} else {
+			System.out.println("****************LOADING FAILED****************");
 			return "src/intro_to_file_io/TestingGrounds.java";
 		}
 
