@@ -136,7 +136,7 @@ public class IntroToFileIO implements ActionListener {
 			System.out.println(fileName);
 			return fileName;
 		} else {
-			System.out.println("****************LOADING FAILED****************");
+			System.out.println("****************LOADING STOPPED****************");
 			return "src/intro_to_file_io/TestingGrounds.java";
 		}
 
@@ -145,6 +145,9 @@ public class IntroToFileIO implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("Add Task to List")) {
 			System.out.println("ADD");
+			for (String string : listOfTasks) {
+				list = "<html>" + list + "=>" + string + "<br><html>";
+			}
 			toDoList.setText(addTask("src/intro_to_file_io/TestingGrounds.java"));
 		}
 		if (e.getActionCommand().equals("Remove Task from List")) {
@@ -205,8 +208,8 @@ public class IntroToFileIO implements ActionListener {
 		return stuffRead;
 
 	}
-
 	/* ^^^^^^^^^^^^^^^ **/
+	
 	void BufferReader(String fileToRead) {
 		// Read from a file one line at a time
 		try {
@@ -226,7 +229,8 @@ public class IntroToFileIO implements ActionListener {
 			e.printStackTrace();
 		}
 	}
-	void BufferReaderStringOutput(String fileToRead)/*check*/ {
+
+	/*void BufferReaderStringOutput(String fileToRead)/check/ {
 		// Read from a file one line at a time
 		String fileRead = "<html>";
 		try {
@@ -248,10 +252,9 @@ public class IntroToFileIO implements ActionListener {
 			e.printStackTrace();
 		}
 		//return fileRead;
-	}
+	}*/
 
-	/** vvvvvvvvvvvvvvv **/
-	/** /vvvvvvvSTILL NOT WORKINGvvvvvvv*/
+	/** 
 	String RemoveTaskReader(String fileToRead, int lineToRemove) {
 		// Read from a file one line at a time
 		String stuffRead = "<html>";
@@ -280,9 +283,10 @@ public class IntroToFileIO implements ActionListener {
 		System.out.println(stuffRead);
 		return stuffRead;
 	}
-	/** / ^^^^^^^STILL NOT WORKING^^^^^^^*/
+	/ / ^^^^^^^STILL NOT WORKING^^^^^^^/
 
-	/** ^^^^^^^^^^^^^^^^ **/
+	/ ^^^^^^^^^^^^^^^^ / **/
+
 	void FileWriter(String fileToWriteTo, String messageToWrite) {
 		// Write to a file
 		try {
