@@ -148,7 +148,7 @@ public class IntroToFileIO implements ActionListener {
 			for (String string : listOfTasks) {
 				list = "<html>" + list + "=>" + string + "<br><html>";
 			}
-			toDoList.setText(addTask("src/intro_to_file_io/TestingGrounds.java"));
+			toDoList.setText(addTask(fileChosen));
 		}
 		if (e.getActionCommand().equals("Remove Task from List")) {
 			System.out.println("REMOVE");
@@ -204,7 +204,7 @@ public class IntroToFileIO implements ActionListener {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		stuffRead += "<html";
+		stuffRead += "<html>";
 		return stuffRead;
 
 	}
@@ -313,6 +313,7 @@ public class IntroToFileIO implements ActionListener {
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			String fileName = jfc.getSelectedFile().getAbsolutePath();
 			System.out.println(fileName);
+			System.out.println(jfc.getSelectedFile().getPath());
 		}
 	}
 
