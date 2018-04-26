@@ -61,8 +61,8 @@ public class IntroToFileIO implements ActionListener {
 		BufferReader("src/intro_to_file_io/TestingGrounds.java");
 		System.out.println("\n \n");
 		FileReader("src/intro_to_file_io/TestingGrounds.java");
-		//toDoList.setText(BufferReaderStringOutput(fileChosen));;
-		//list = BufferReaderStringOutput(fileChosen);
+		// toDoList.setText(BufferReaderStringOutput(fileChosen));;
+		// list = BufferReaderStringOutput(fileChosen);
 		toDoList.setText(listOfTasks.toString());
 		update();
 	}
@@ -90,29 +90,35 @@ public class IntroToFileIO implements ActionListener {
 		FileReader("src/" + fileToRead);
 	}
 
-	String addTask(String taskLocation) {
+	void addTask(String taskLocation) {
 		String userInputReady = JOptionPane.showInputDialog("Type in the task you would like to save here!");
-		if (userInputReady != null) {
+		/*if (userInputReady != null) {
 			list = "<html>" + list + "=>" + userInputReady + "<br><html>";
-			listOfTasks.add(userInputReady);
 			// FileWriter(taskLocation, FileReaderString(taskLocation) + "=-> " +
 			// userInputReady);
+		}*/
+		if(userInputReady.isEmpty()==false) {
+			listOfTasks.add(userInputReady);
+			update();
 		}
-		return list;
 	}
 
 	/** vvvvvvvWORK HEREvvvvvvv **/
 	String removeTask() {
 		String taskToRemove = JOptionPane.showInputDialog(
 				"Which item on the list would you like to remove? Enter -just- the number of the line");
-
-		int taskToRemoveInt = Integer.parseInt(taskToRemove);
+		if(Integer.parseInt(taskToRemove)<=listOfTasks.size()) {
+		listOfTasks.remove(Integer.parseInt(taskToRemove) - 1);
 		// for (int i = 0; i < array.length; i++) {
 		//
 		// }
 		// FileWriter("src/intro_to_file_io/TestingGrounds.java",
 		// RemoveTaskReader("src/intro_to_file_io/TestingGrounds.java",taskToRemoveInt));
-		//String returnedText = RemoveTaskReader(fileChosen, taskToRemoveInt);
+		// String returnedText = RemoveTaskReader(fileChosen, taskToRemoveInt);
+		update();
+		String returnedText = "";
+		return returnedText;
+	}
 		String returnedText = "";
 		return returnedText;
 	}
@@ -123,9 +129,18 @@ public class IntroToFileIO implements ActionListener {
 	}
 
 	void update() {
-		//toDoList.setText(BufferReaderStringOutput(fileChosen));
+		// toDoList.setText(BufferReaderStringOutput(fileChosen));
+		if (listOfTasks.isEmpty() == false) {
+			list = "";
+			//list = "<html>";
+			for (String string : listOfTasks) {
+				list += "<html>" + "=>" +  string + "<br><html>";
+			}
+			//list += "<br><html>";
+		}
+		toDoList.setText(list);
 	}
-	
+
 	String loadList() {
 		String fileName;
 		// Using a file chooser
@@ -143,12 +158,13 @@ public class IntroToFileIO implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		//update();
 		if (e.getActionCommand().equals("Add Task to List")) {
 			System.out.println("ADD");
-			for (String string : listOfTasks) {
+			/*for (String string : listOfTasks) {
 				list = "<html>" + list + "=>" + string + "<br><html>";
-			}
-			toDoList.setText(addTask(fileChosen));
+			}*/
+			addTask(fileChosen);
 		}
 		if (e.getActionCommand().equals("Remove Task from List")) {
 			System.out.println("REMOVE");
@@ -162,7 +178,6 @@ public class IntroToFileIO implements ActionListener {
 			System.out.println("LOAD");
 			fileChosen = loadList();
 		}
-		update();
 	}
 
 	void FileReader(String fileToRead) {
@@ -190,12 +205,13 @@ public class IntroToFileIO implements ActionListener {
 			BufferedReader br = new
 
 			BufferedReader(new FileReader(fileToRead));
-			
+
 			String line = br.readLine();
 			while (line != null) {
-				stuffRead =  stuffRead + line + "<br/>";
+				stuffRead = stuffRead + line + "<br/>";
 				line = br.readLine();
-				// System.out.println("HI!"); "<html>" + "Guest number " + numberOfNames + "; " + List + "<br></html>"
+				// System.out.println("HI!"); "<html>" + "Guest number " + numberOfNames + "; "
+				// + List + "<br></html>"
 			}
 
 			br.close();
@@ -209,7 +225,7 @@ public class IntroToFileIO implements ActionListener {
 
 	}
 	/* ^^^^^^^^^^^^^^^ **/
-	
+
 	void BufferReader(String fileToRead) {
 		// Read from a file one line at a time
 		try {
@@ -230,62 +246,34 @@ public class IntroToFileIO implements ActionListener {
 		}
 	}
 
-	/*void BufferReaderStringOutput(String fileToRead)/check/ {
-		// Read from a file one line at a time
-		String fileRead = "<html>";
-		try {
-			BufferedReader br = new BufferedReader(new FileReader(fileToRead));
+	/*
+	 * void BufferReaderStringOutput(String fileToRead)/check/ { // Read from a file
+	 * one line at a time String fileRead = "<html>"; try { BufferedReader br = new
+	 * BufferedReader(new FileReader(fileToRead));
+	 * 
+	 * String line = br.readLine(); while (line != null) { System.out.println(line);
+	 * fileRead =fileRead + line + "<br/>"; line = br.readLine();
+	 * System.out.println("HI!"); } fileRead +="<br></html>";
+	 * 
+	 * br.close(); } catch (FileNotFoundException e1) { e1.printStackTrace(); }
+	 * catch (IOException e) { e.printStackTrace(); } //return fileRead; }
+	 */
 
-			String line = br.readLine();
-			while (line != null) {
-				System.out.println(line);
-				fileRead =fileRead + line + "<br/>";
-				line = br.readLine();
-				System.out.println("HI!");
-			}
-			fileRead +="<br></html>";
-
-			br.close();
-		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		//return fileRead;
-	}*/
-
-	/** 
-	String RemoveTaskReader(String fileToRead, int lineToRemove) {
-		// Read from a file one line at a time
-		String stuffRead = "<html>";
-		int lineNumber = 0;
-		try {
-			BufferedReader br = new BufferedReader(new FileReader(fileToRead));
-			String line = br.readLine();
-			while (line != null) {
-				System.out.println(line);
-				if (lineNumber == (lineToRemove - 1)) {
-					stuffRead = stuffRead + "<br/>";
-					br.readLine();
-				} else {
-					stuffRead = stuffRead + line + "<br/>";
-					line = br.readLine();
-				}
-				lineNumber++;
-			}
-			stuffRead += "<br></html>";
-			br.close();
-		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} // lineNumber = 1;
-		System.out.println(stuffRead);
-		return stuffRead;
-	}
-	/ / ^^^^^^^STILL NOT WORKING^^^^^^^/
-
-	/ ^^^^^^^^^^^^^^^^ / **/
+	/**
+	 * String RemoveTaskReader(String fileToRead, int lineToRemove) { // Read from a
+	 * file one line at a time String stuffRead = "<html>"; int lineNumber = 0; try
+	 * { BufferedReader br = new BufferedReader(new FileReader(fileToRead)); String
+	 * line = br.readLine(); while (line != null) { System.out.println(line); if
+	 * (lineNumber == (lineToRemove - 1)) { stuffRead = stuffRead + "<br/>
+	 * "; br.readLine(); } else { stuffRead = stuffRead + line + "<br/>
+	 * "; line = br.readLine(); } lineNumber++; } stuffRead += "<br>
+	 * </html>"; br.close(); } catch (FileNotFoundException e1) {
+	 * e1.printStackTrace(); } catch (IOException e) { e.printStackTrace(); } //
+	 * lineNumber = 1; System.out.println(stuffRead); return stuffRead; } / /
+	 * ^^^^^^^STILL NOT WORKING^^^^^^^/
+	 * 
+	 * / ^^^^^^^^^^^^^^^^ /
+	 **/
 
 	void FileWriter(String fileToWriteTo, String messageToWrite) {
 		// Write to a file
