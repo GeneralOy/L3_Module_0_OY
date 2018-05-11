@@ -198,7 +198,7 @@ public class IntroToFileIO implements ActionListener {
 		}
 	}
 
-	/* vvvvvvvvvvvvvvv **/
+	/* vvvvvvvvvvvvvvv**/
 	String FileReaderString(String fileToRead) {
 		String stuffRead = "<html>";
 		try {
