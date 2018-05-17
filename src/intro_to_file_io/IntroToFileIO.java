@@ -103,11 +103,10 @@ public class IntroToFileIO implements ActionListener {
 		}
 	}
 
-	/** vvvvvvvWORK HEREvvvvvvv **/
 	String removeTask() {
 		String taskToRemove = JOptionPane.showInputDialog(
 				"Which item on the list would you like to remove? Enter -just- the number of the line");
-		if(Integer.parseInt(taskToRemove)<=listOfTasks.size()) {
+		if(Integer.parseInt(taskToRemove)<=listOfTasks.size()&&Integer.parseInt(taskToRemove)>0) {
 		listOfTasks.remove(Integer.parseInt(taskToRemove) - 1);
 		// for (int i = 0; i < array.length; i++) {
 		//
@@ -116,21 +115,21 @@ public class IntroToFileIO implements ActionListener {
 		// RemoveTaskReader("src/intro_to_file_io/TestingGrounds.java",taskToRemoveInt));
 		// String returnedText = RemoveTaskReader(fileChosen, taskToRemoveInt);
 		update();
-		String returnedText = "";
+		String returnedText = list;
 		return returnedText;
 	}
-		String returnedText = "";
+		String returnedText = list;
 		return returnedText;
 	}
-
-	/** ^^^^^^^WORK HERE^^^^^^^ **/
+/*VVVVVvvvvvWORKvvvvvVVVVV*/
 	void saveList(String fileToSaveTo) {
-		FileWriter(fileToSaveTo, toDoList.getText());
+		FileWriter(fileToSaveTo, list);
 	}
-
+/*^^^^^^^^^^WORK^^^^^^^^^^*/
+/**VVVVVvvvvvWORKvvvvvVVVVV*/
 	void update() {
 		// toDoList.setText(BufferReaderStringOutput(fileChosen));
-		if (listOfTasks.isEmpty() == false) {
+		if (listOfTasks.isEmpty()!=true) {
 			list = "";
 			//list = "<html>";
 			for (String string : listOfTasks) {
@@ -140,7 +139,7 @@ public class IntroToFileIO implements ActionListener {
 		}
 		toDoList.setText(list);
 	}
-
+/**^^^^^^^^^^WORK^^^^^^^^^^*/
 	String loadList() {
 		String fileName;
 		// Using a file chooser
@@ -156,7 +155,6 @@ public class IntroToFileIO implements ActionListener {
 		}
 
 	}
-
 	public void actionPerformed(ActionEvent e) {
 		//update();
 		if (e.getActionCommand().equals("Add Task to List")) {
@@ -177,6 +175,7 @@ public class IntroToFileIO implements ActionListener {
 		if (e.getActionCommand().equals("Load List")) {
 			System.out.println("LOAD");
 			fileChosen = loadList();
+			toDoList.setText(FileReaderString(fileChosen));
 		}
 	}
 
