@@ -123,7 +123,7 @@ public class IntroToFileIO implements ActionListener {
 	}
 /*VVVVVvvvvvWORKvvvvvVVVVV*/
 	void saveList(String fileToSaveTo) {
-		FileWriter(fileToSaveTo, list);
+		FileWriterIn(fileToSaveTo, listOfTasks);
 	}
 /*^^^^^^^^^^WORK^^^^^^^^^^*/
 /**VVVVVvvvvvWORKvvvvvVVVVV*/
@@ -176,6 +176,8 @@ public class IntroToFileIO implements ActionListener {
 			System.out.println("LOAD");
 			fileChosen = loadList();
 			toDoList.setText(FileReaderString(fileChosen));
+			FileReaderArray(fileChosen);
+			list = FileReaderString(fileChosen);
 		}
 	}
 
@@ -197,13 +199,11 @@ public class IntroToFileIO implements ActionListener {
 		}
 	}
 
-	/* vvvvvvvvvvvvvvv**/
+
 	String FileReaderString(String fileToRead) {
 		String stuffRead = "<html>";
 		try {
-			BufferedReader br = new
-
-			BufferedReader(new FileReader(fileToRead));
+			BufferedReader br = new BufferedReader(new FileReader(fileToRead));
 
 			String line = br.readLine();
 			while (line != null) {
@@ -223,7 +223,27 @@ public class IntroToFileIO implements ActionListener {
 		return stuffRead;
 
 	}
-	/* ^^^^^^^^^^^^^^^ **/
+
+	void FileReaderArray(String fileToRead) {
+		//int i=0;
+		listOfTasks.clear();
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(fileToRead));
+
+			String line = br.readLine();
+			while (line != null) {
+				listOfTasks.add(line);
+				line = br.readLine();
+			}
+
+			br.close();
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
 
 	void BufferReader(String fileToRead) {
 		// Read from a file one line at a time
@@ -292,7 +312,28 @@ public class IntroToFileIO implements ActionListener {
 			e.printStackTrace();
 		}
 	}
+	
+	void FileWriterIn(String fileToWriteTo, ArrayList<String> messageToWrite) {
+		// Write to a file
+		try {
+			FileWriter fw = new FileWriter(fileToWriteTo);
+			for (int i = 0; i < messageToWrite.size(); i++) {
 
+			/*
+			 * NOTE: To append to a file that already exists, add true as a second parameter
+			 * when calling the FileWriter constructor. (e.g. FileWriter fw = new
+			 * FileWriter("src/intro_to_file_io/test2.txt", true);)
+			 */
+
+			fw.write(messageToWrite.get(i));
+
+			}
+			fw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	void FileChooser() {
 		// Using a file chooser
 		JFileChooser jfc = new JFileChooser();
