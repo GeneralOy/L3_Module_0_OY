@@ -326,6 +326,7 @@ public class IntroToFileIO implements ActionListener {
 			 */
 
 			fw.write(messageToWrite.get(i));
+			fw.write(System.getProperty("line.separator"));
 
 			}
 			fw.close();
