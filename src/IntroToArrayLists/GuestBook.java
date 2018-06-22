@@ -1,4 +1,5 @@
 package IntroToArrayLists;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -36,6 +37,10 @@ public class GuestBook implements ActionListener {
 		mainFarme.add(mainPanel);
 		mainPanel.add(addName);
 		mainPanel.add(viewNames);
+		mainPanel.add(names);
+		Dimension preferredSize = new Dimension(350,500);
+		names.setPreferredSize(preferredSize);
+		names.setVerticalTextPosition(SwingConstants.TOP);
 		mainFarme.setSize(350, 400);
 		addName.setText("Add a Name");
 		viewNames.setText("View Names");
@@ -60,21 +65,23 @@ public class GuestBook implements ActionListener {
 			
 		}
 		if(e.getActionCommand().equals("View Names")) {
+			String content = "";
 			for(String List : namesList) {
 				numberOfNames ++;
 				//JLabel label = new JLabel();
 				System.out.println("Guest number " + numberOfNames + "-" + List);
-				mainPanel.add(label);
-				label.setText("<html>" + "Guest number " + numberOfNames + "; " + List + "</html>");
+				//mainPanel.add(names);
+				content += "Guest number " + numberOfNames + "-" + List + "\n";
 			}
+			names.setText(content /*+ "\n"*/);
 			numberOfNames = 0;
 			System.out.println("viewNames");
 			viewNames.setText("Back");
 		}
 		if(e.getActionCommand().equals("Back")) {
-			mainPanel.removeAll();
-			mainPanel.add(addName);
-			mainPanel.add(viewNames);
+			//mainPanel.removeAll();
+			//mainPanel.add(addName);
+			//mainPanel.add(viewNames);
 			System.out.println("Back");
 			viewNames.setText("View Names");
 		}
