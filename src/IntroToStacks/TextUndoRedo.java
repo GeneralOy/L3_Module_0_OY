@@ -56,13 +56,6 @@ public class TextUndoRedo implements KeyListener {
 	 * JLabel.
 	 * 
 	 */
-	/*
-	 * public void actionPerformed(ActionEvent e) { if(e.) this.userinput +=
-	 * e.toString(); System.out.println(e.toString());
-	 * mainInputLabel.setText(userinput);
-	 * 
-	 * }
-	 */
 
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -83,15 +76,6 @@ public class TextUndoRedo implements KeyListener {
 			userinput += e.getKeyChar() + "";
 			mainInputLabel.setText(userinput);
 		}
-		/*
-		 * if (e.getKeyCode() == e.VK_BACK_SPACE) {
-		 * 
-		 * System.out.println(e.toString()); mainInputLabel.setText(userinput);
-		 * } else {
-		 * 
-		 * System.out.println(e.toString()); mainInputLabel.setText(userinput);
-		 * }
-		 */
 
 	}
 

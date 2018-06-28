@@ -61,7 +61,7 @@ public class LogSearch implements ActionListener {
 			System.out.println("View List");
 			if (IDInt > 0) {
 				IDConversion = "ID";
-				for (int i = 0; i < IDInt; i++) {
+				for (int i = 1; i <= IDInt; i++) {
 					IDConversion += "; " + ID.get(i);
 				}
 				JOptionPane.showMessageDialog(null, "" + IDConversion);

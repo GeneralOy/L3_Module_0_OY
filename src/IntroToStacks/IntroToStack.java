@@ -16,16 +16,16 @@ public class IntroToStack {
 			doubleStack.push((double) randomNumber.nextInt(100));
 			System.out.println(i);
 		}
+		System.out.println(doubleStack.size());
 		int userIn1 = Integer.parseInt(JOptionPane.showInputDialog("Input the lower bound here"));
 		int userIn2 = Integer.parseInt(JOptionPane.showInputDialog("Input the upper bound here"));
 
-		for (int i = 0; i < 100; i++) {
-			if (userIn1 < doubleStack.get(i)) {
-				if (userIn2 > doubleStack.get(i)) {
-					System.out.println(doubleStack.get(i));
+		for (int i = 99; i >= 0; i--) {
+			if (doubleStack.get(i) < userIn2 && doubleStack.get(i) > userIn1) {
+					System.out.println(doubleStack.pop());
+				}else {
+					doubleStack.pop();
 				}
-			}
-			doubleStack.pop();
 		}
 		/** 2. Use a loop to push 100 random doubles between 0 and 100 to the Stack. **/
 
