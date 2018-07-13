@@ -9,7 +9,7 @@ public class HashMapDemo {
 		
 		studentRoster.put(75869, "Danny Ditko");
 		studentRoster.put(15684, "Tiana Tickles");
-		studentRoster.put(87561, "Freddy Farewell");
+		studentRoster.put(87561, "Freddy Faraday");
 		studentRoster.put(96546, "Willy Wham");
 		studentRoster.put(35413, "Janet Jam");
 		studentRoster.put(84565, "Ziggy Zam");
